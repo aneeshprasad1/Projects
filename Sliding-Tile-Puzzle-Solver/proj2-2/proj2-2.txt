@@ -1,0 +1,56 @@
+1. 5x2 with 6 slaves: 1:47.52 elapsed
+	with 12 slaves: 3:33.53 elapsed
+
+	3x4 with 12 slaves: 41:16.84 elapsed
+
+2. 5x2 with 6 slaves: 
+	Total bytes = 24845750
+	24845750bytes/(107.52s) = 231080.264137Bytes/s 
+	= 0.231 MB/s
+
+		Mean rate of 6 slaves = 0.231 Mb/s
+
+
+	5x2 with 12 slaves:
+	Total bytes = 24845750
+	24845750 bytes / (213.53s) = 116357.186344 B/s 
+	= 0.1164 MB/s
+
+
+	3x4 with 12 slaves:
+	Total Bytes: 3461751568 bytes
+	MB/s = 3461751568 bytes/ (2476.84s) = 1397648.442b/s = 1.39764844237 MB/s
+
+
+		Mean rate of 12 slaves = 0.757 Mb/s
+
+
+3. The speed went from 0.231 Mb/s in the 6-slave case to 0.1164 in the 12-slave case, a 50% decrease. Spark does not parallelize this case very well, because the reduce phase takes twice as long with twice as many slaves. This would constitute a case of weak scaling where the solution time varies as you add processors depending on the problem size per processor.
+
+4. To process the 6-slave cluster:
+
+	Total 24.846MB processed --> .0249 GB processed
+	Total time -- > 1:48 --> rounds up to 1 hour
+	1 hour * 0.68 dollars/hour * 6 instances = 4.08 dollars
+	4.08 dollars / .0249GB 
+
+	=  163.86 dollars per gigabyte
+
+
+	To process the 12-slave cluster:
+
+	Total 3486.597 MB processed --> 3.487 GB processed
+	Total time --> 44:50.37 --> rounds up to one hour
+	1hour* 0.68dollars/hour * 12 instances = 8.16 dollars
+	8.16 dollars/ 3.487GB = 2.34 dollars per gigabyte
+
+
+5. We were logged on to the 6-slave cluster for a little over two hours total and logged on to the 12-slave cluster for a little over two hours total. Rounding up....
+
+	3 hours * 0.68 dollars/hour * 6 instances = 12.24 dollars
+
+	3 hours * 0.68 dollars/hour * 12 instances = 24.48 dollars
+
+	In total, we spend 36.72 dollars
+
+

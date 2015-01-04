@@ -1,0 +1,15 @@
+1. 
+
+With a solution set instead of a single solution, you wouldn’t be able to reach certain positions. For instance, with the solution set such that 1 is in the upper-left hand corner, [1, 2, 3, —] and [1, 3, 2, —] cannot both be reached from any given starting point. 
+
+
+2.
+
+We could simply start from the starting point and map reduce out, solving from start to solution, rather than all potential solutions to start. Instead of storing the distance to the solution, we can store distance from starting point and reduce based on that.
+
+
+3.
+
+With a loop-free game, each step is either moving us closer to the solution or moving us down a dead-end path. Assuming that there is one initial position and a finite number of moves to the solution, like in Peg Solitaire, we would be able to start from the initial position instead and store the distance from the initial position. Moreover, because there's no loop and the same position cannot be reached by looping back to it, there's no need to keep track of the distance to the solution and we can simply use the global level variable to indicate how far the solution is.
+
+We would move to all possible positions starting from the initial position, and when a position has no more children and is not the solution, instead of storing the distance from the solution, store a boolean that indicates this is a dead-end. You would then work backwards and if a position's only child(ren) are positions that are dead-ends, the first position will store a boolean indicating it is also a dead-end.
