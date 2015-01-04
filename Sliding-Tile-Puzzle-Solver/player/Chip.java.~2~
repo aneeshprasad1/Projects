@@ -1,0 +1,68 @@
+/* Chip.java */
+
+package player;
+
+/**
+ *  An implementation of a single Chip on the GameBoard. Keeps track of
+ *  chip's position on GameBoard and connected Chips. Can set
+ *  new Connections in given direction. Can also remove Chips, and 
+ *  perform add and step moves.
+ **/
+
+public class Chip { // default ... or private?    
+    int x, y;
+    int color;
+    GameBoard board;
+    Chip[][] connections;
+
+    public Chip(GameBoard board, int x, int y, int color) {
+    	this.board = board;
+    	this.x = x;
+    	this.y = y;
+    	this.color = color;
+        connections = new Chip[3][3];
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setPosition(int x, int y) {
+      	this.x = x;
+        this.y = y;
+    }
+    
+    // Returns int array of Chip's coordinates
+    public int[] getPosition() {
+      	int[] position = {x, y};
+      	return position;
+    }
+
+    public boolean hasConnection(int dir) {
+        int x1 = Direction.indexX(dir);
+        int y1 = Direction.indexY(dir);
+        return (connections[x1][y1] != null);
+    }
+    public void setConnection(int dir, Chip c) {
+        int x1 = Direction.indexX(dir);
+        int y1 = Direction.indexY(dir);
+        connections[x1][y1] = c;
+    }
+
+    public Chip getConnection(int dir) {
+        int x1 = Direction.indexX(dir);
+        int y1 = Direction.indexY(dir);
+        return connections[x1][y1];
+    }
+
+    public void removeConnection(int dir) {
+        int x1 = Direction.indexX(dir);
+        int y1 = Direction.indexY(dir);
+        connections[x1][y1] = null;
+    }
+
+    public String toString() {
+        String s = "(" + x + ", " + y + ")";
+        return s;
+    }
+}

@@ -1,0 +1,50 @@
+/* grader.java */
+/* By Aneesh Prasad */
+
+/**
+ *  GameBoard
+ *    Chip[][] board;
+ *    Chip[][] placedChips;
+ *    int[] directions = Direction.directions;
+ *    int whoseTurn;
+ *
+ *    GameBoard(); // constructor
+ *    makeMove(Move m, int color); // @return void
+ *    undoMove(Move m); // @return void
+ *    isValidSquare(int x, int y); // @return boolean // Why or statements and not and??
+ *    hasChip(int x, int y); // @return boolean
+ *    getChip(int x, int y); // @return Chip
+ *    setChip(int x, int y, int color); // @return void
+ *    removeChip(int x, int y); // @return void
+ *    moveChip(int x1, int y1,
+ *             int x2, int y2); // @return void
+ *    makeConnections(Chip c); // @return void
+ *    removeConnections(Chip c); // @return void
+ *
+ *    hasValidNetwork(int color); // @return boolean
+ *    longestNetworkN(int color); // @return int[]
+ *    numberAdjacentChips(int x, int y, int color,
+ *                        int avoidX, int avoidY); // @return int
+ *    isRightTurn(int color); // @return boolean
+ *
+ *    isValidMove(Move m, int color); // @return boolean
+ *    listValidMoves(int color); // @return Move[]
+ *    evaluation(); // @return float
+ *
+ *
+ *  MachinePlayer
+ *    int color;
+ *    int searchDepth;
+ *    GameBoard board;
+ *
+ *    MachinePlayer(int color);
+ *    MachinePlayer(int color, int searchDepth);
+ *    choseMove(); // @return Move
+ *    bestMove(int color, int alpha,
+ *             int beta, int depth); // @return Best
+ *    opponentMove(Move m); // @return boolean
+ *
+ *
+ *  Direction
+ *    
+ **/
